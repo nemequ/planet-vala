@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title><TMPL_VAR name></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="generator" content="<TMPL_VAR generator ESCAPE="HTML">">
+
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+		<TMPL_IF feedtype>
+			<link rel="alternate" href="<TMPL_VAR feed ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">" type="application/<TMPL_VAR feedtype>+xml">
+		</TMPL_IF>
+	</head>
+
+	<body>
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="http://www.vala-project.org/">Vala</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="https://wiki.gnome.org/Projects/Vala/Tutorial">Tutorial</a></li>
+						<li><a href="http://www.valadoc.org/">Valadoc</a></li>
+						<li class="active"><a href="http://planet.vala-project.org/">Planet Vala</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Getting Help <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="https://mail.gnome.org/mailman/listinfo/vala-list">Mailing List</a></li>
+								<li><a href="irc://irc.gimp.org/vala"><abbr title="Internet Relay Chat">IRC</abbr></a></li>
+								<li><a href="http://chat.mibbit.com/?server=irc.gimp.org&channel=%23vala">IRC Web Interface</a></li>
+								<li class="divider"></li>
+								<li><a href="https://stackoverflow.com/questions/tagged/vala">Stack Overflow <small>(unofficial)</small></a></li>
+							</ul>
+						</li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Blogs <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href=""></a></li>
+								<TMPL_LOOP Channels>
+									<li>
+										<a <TMPL_IF link>href="<TMPL_VAR link ESCAPE="HTML">" </TMPL_IF><TMPL_IF message>class="message" title="<TMPL_VAR message ESCAPE="HTML">"</TMPL_IF><TMPL_UNLESS message>title="<TMPL_VAR title_plain ESCAPE="HTML">"</TMPL_UNLESS>><TMPL_VAR name></a>
+									</li>
+								</TMPL_LOOP>
+							</ul>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<TMPL_LOOP Items>
+						<article class="panel panel-default">
+							<div class="panel-heading">
+								<h3<TMPL_IF title_language> lang="<TMPL_VAR title_language>"</TMPL_IF> class="panel-title">
+									<a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_VAR title></a>
+								</h3>
+							</div>
+							<div class="panel-body">
+								<TMPL_VAR content>
+							</div>
+							<div class="panel-footer">
+								<a href="<TMPL_VAR channel_link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR channel_name></a>
+								at <TMPL_VAR date></a>
+							</div>
+						</article>
+					</TMPL_LOOP>
+				</div>
+			</div>
+		</div>
+
+		<footer class="container text-center">
+			Last updated <TMPL_VAR date>.<br>
+			Please report issues or suggestions to the <a href="https://github.com/nemequ/planet-vala">nemequ/planet-vala</a> repository on GitHub.
+		</footer>
+	</body>
+</html>
