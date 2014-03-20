@@ -5,44 +5,55 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="generator" content="<TMPL_VAR generator ESCAPE="HTML">">
 
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-		<TMPL_IF feedtype>
-			<link rel="alternate" href="<TMPL_VAR feed ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">" type="application/<TMPL_VAR feedtype>+xml">
-		</TMPL_IF>
+		<style type="text/css">
+			body {
+				background: url(html-bg.png) repeat-x;
+				padding-top: 1em;
+			}
+
+			.feed-link {
+				background: url("feed-icon-14x14.png") no-repeat center center;
+				min-height: 14px;
+				text-indent: -9999em;
+				min-width: 14px;
+			}
+		</style>
+
+		<link rel="alternate" type="application/atom+xml" href="atom.xml"    title="Atom feed"/>
+		<link rel="alternate" type="application/rss+xml" href="rss10.xml"    title="RSS 1.0 feed"/>
+		<link rel="alternate" type="application/rss+xml" href="rss20.xml"    title="RSS 2.0 feed"/>
+		<link rel="meta"      type="application/rdf+xml" href="foafroll.rdf" title="FOAF"/>
+		<link rel="outline"   type="text/x-opml"         href="opml.xml"     title="OPML"/>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-inverse" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="container-fluid">
+			<nav class="navbar navbar-inverse col-md-10 col-md-offset-1" role="navigation">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="http://www.vala-project.org/">Vala</a>
 				</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="https://wiki.gnome.org/Projects/Vala/Tutorial">Tutorial</a></li>
 						<li><a href="http://www.valadoc.org/">Valadoc</a></li>
 						<li class="active"><a href="http://planet.vala-project.org/">Planet Vala</a></li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Getting Help <b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Get Help <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="https://mail.gnome.org/mailman/listinfo/vala-list">Mailing List</a></li>
 								<li><a href="irc://irc.gimp.org/vala"><abbr title="Internet Relay Chat">IRC</abbr></a></li>
-								<li><a href="http://chat.mibbit.com/?server=irc.gimp.org&channel=%23vala">IRC Web Interface</a></li>
+								<li><a href="https://kiwiirc.com/client/irc.gimp.org#vala">IRC Web Interface</a></li>
 								<li class="divider"></li>
 								<li><a href="https://stackoverflow.com/questions/tagged/vala">Stack Overflow <small>(unofficial)</small></a></li>
 							</ul>
 						</li>
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Find Projects <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -54,6 +65,9 @@
 								<li><a href="https://www.ohloh.net/tags/vala">Ohloh</a></li>
 							</ul>
 						</li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Blogs <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -65,10 +79,11 @@
 								</TMPL_LOOP>
 							</ul>
 						</li>
+						<li><a href="<TMPL_VAR feed ESCAPE="HTML">" class="feed-link">Feed</a></li>
 					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</nav>
+				</div>
+			</nav>
+		</div>
 
 		<div class="container-fluid">
 			<div class="row">
@@ -95,7 +110,12 @@
 
 		<footer class="container text-center">
 			Last updated <TMPL_VAR date> UTC.<br>
-			Please report issues or suggestions to the <a href="https://github.com/nemequ/planet-vala">nemequ/planet-vala</a> repository on GitHub.
+			Please report issues or suggestions to the <a href="https://github.com/nemequ/planet-vala">nemequ/planet-vala</a> repository on GitHub.<br>
+			<a href="atom.xml">Atom</a> |
+			<a href="rss20.xml"><abbr title="Rich Site Syndication">RSS</abbr> 2.0</a> |
+			<a href="rss10.xml"><abbr title="Rich Site Syndication">RSS</abbr> 1.0</a> |
+			<a href="foafroll.xml"><abbr title="Friend Of A Friend">FOAF</abbr></a> |
+			<a href="opml.xml"><abbr title="Outline Processor Markup Language">OPML</abbr></a>
 		</footer>
 	</body>
 </html>
